@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "dubstep_gun",
+	"parent": "redstone_dubstep_gun",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "skitdubstepguns:item/dubstep_gun",
-		"particle": "skitdubstepguns:item/dubstep_gun"
+		"0": "skitdubstepguns:item/redstone_dubstep_gun",
+		"particle": "skitdubstepguns:item/redstone_dubstep_gun"
 	},
 	"elements": [
 		{

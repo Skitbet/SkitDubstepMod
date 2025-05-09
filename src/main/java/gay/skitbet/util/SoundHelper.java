@@ -11,11 +11,10 @@ public class SoundHelper {
 
     public static void playDubstepLoopSound(Vector3f position) {
         MinecraftClient client = MinecraftClient.getInstance();
-        System.out.println("test");
         // Avoid duplicates
         if (dubstepSound == null || !client.getSoundManager().isPlaying(dubstepSound)) {
             dubstepSound = new PositionedSoundInstance(
-                    ModSounds.DUBSTEP_LOOP,
+                    ModSounds.RESTONE_DUBSTEP_MUSIC,
                     SoundCategory.PLAYERS,
                     1.0f,
                     1.0f,

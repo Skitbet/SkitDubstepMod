@@ -1,9 +1,6 @@
 package gay.skitbet;
 
-import gay.skitbet.init.ModEntities;
-import gay.skitbet.init.ModItems;
-import gay.skitbet.init.ModPackets;
-import gay.skitbet.init.ModSounds;
+import gay.skitbet.init.*;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -20,5 +17,6 @@ public class SkitDubstepMod implements ModInitializer {
 		ModEntities.init();
 		ModItems.init();
 		ModPackets.init();
+		ModItemGroup.register();
 	}
 }

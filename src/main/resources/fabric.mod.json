@@ -22,7 +22,7 @@
 			"gay.skitbet.client.SkitDubstepModClient"
 		],
 		"fabric-datagen": [
-			"gay.skitbet.SkitDubstepGunsDataGenerator"
+			"gay.skitbet.data.SkitDubstepGunsDataGenerator"
 		]
 	},
 	"depends": {

@@ -1,8 +1,8 @@
 {
-  "dubstep_loop": {
-    "subtitle": "sound.dubstep.dubstep_loop",
+  "redstone_dubstep": {
+    "subtitle": "sound.dubstep.redstone_dubstep",
     "sounds": [
-      "skitdubstepguns:dubstep_loop"
+      "skitdubstepguns:redstone_dubstep"
     ]
   }
 }

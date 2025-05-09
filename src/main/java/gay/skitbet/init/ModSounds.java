@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class ModSounds {
 
-    public static final SoundEvent DUBSTEP_LOOP = registerSound("dubstep_loop");
+    public static final SoundEvent RESTONE_DUBSTEP_MUSIC = registerSound("redstone_dubstep");
 
     private static SoundEvent registerSound(String id) {
         Identifier identifier = Identifier.of(SkitDubstepMod.MOD_ID, id);

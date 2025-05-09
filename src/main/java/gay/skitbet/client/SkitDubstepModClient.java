@@ -14,7 +14,6 @@ public class SkitDubstepModClient implements ClientModInitializer {
 
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.DUBSTEP_START, (client, clientPlayNetworkHandler, packetByteBuf, packetSender) -> {
             Vector3f position = packetByteBuf.readVector3f();
-            System.out.println("test");
             client.execute(() -> SoundHelper.playDubstepLoopSound(position));
         });
 

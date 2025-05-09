@@ -3,11 +3,9 @@ package gay.skitbet.item;
 import gay.skitbet.init.ModPackets;
 import gay.skitbet.util.BeamDamage;
 import gay.skitbet.util.ParticleHelper;
-import gay.skitbet.util.SoundHelper;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,10 +14,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -27,15 +25,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class DubstepGunItem extends Item {
+public class RedstoneDubstepGunItem extends Item {
     private static final Map<UUID, Integer> cooldownTicks = new HashMap<>();
 
-    public DubstepGunItem(Settings settings) {
+    public RedstoneDubstepGunItem(Settings settings) {
         super(settings);
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        if (!hasRedstone(user)) {
+            if (!world.isClient) {
+                user.sendMessage(Text.of("You need redstone to use the Dubstep Gun!"), true);
+            }
+            return TypedActionResult.fail(user.getStackInHand(hand));
+        }
+
         user.setCurrentHand(hand);
 
         if (!world.isClient && user instanceof ServerPlayerEntity serverPlayer) {
@@ -73,12 +78,37 @@ public class DubstepGunItem extends Item {
         UUID playerId = player.getUuid();
         int ticks = cooldownTicks.getOrDefault(playerId, 0);
 
+        if (ticks % 20 == 0) {
+            if (!consumeRedstone(player)) {
+                player.stopUsingItem();
+            }
+        }
+
         if (ticks <= 0) {
             fireDubstepBeam(player, world);
             cooldownTicks.put(playerId, 10);
         } else {
             cooldownTicks.put(playerId, ticks - 1);
         }
+    }
+
+    private boolean hasRedstone(PlayerEntity player) {
+        return player.getInventory().main.stream()
+                .anyMatch(stack -> stack.getItem() == net.minecraft.item.Items.REDSTONE && stack.getCount() > 0);
+    }
+
+    private boolean consumeRedstone(PlayerEntity player) {
+        for (int i = 0; i < player.getInventory().size(); i++) {
+            ItemStack stack = player.getInventory().getStack(i);
+            if (stack.getItem() == net.minecraft.item.Items.REDSTONE) {
+                stack.decrement(1);
+                if (stack.isEmpty()) {
+                    player.getInventory().removeStack(i);
+                }
+                return true;
+            }
+        }
+        return false; // no redstone found
     }
 
     private void fireDubstepBeam(PlayerEntity player, World world) {
