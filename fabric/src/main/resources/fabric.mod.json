@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "gay.skitbet.fabric.ExampleModFabric"
+      "gay.skitbet.dubstepmod.SkitDubstepFabricMod"
     ],
     "client": [
-      "gay.skitbet.fabric.client.ExampleModFabricClient"
+      "gay.skitbet.dubstepmod.client.SkitDubstepModFabricClient"
     ]
   },
   "mixins": [
@@ -28,8 +28,7 @@
   "depends": {
     "fabricloader": ">=0.16.14",
     "minecraft": "~1.20.1",
-    "java": ">=17",
-    "": "*"
+    "java": ">=17"
   },
   "suggests": {
     "another-mod": "*"

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "RRR",
+    "IRI",
+    "IRI"
+  ],
+  "result": {
+    "item": "skitdubstepguns:redstone_dubstep_gun"
+  },
+  "show_notification": true
+}
