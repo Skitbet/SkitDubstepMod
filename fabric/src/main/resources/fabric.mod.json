@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "gay.skitbet.dubstepmod.SkitDubstepFabricMod"
+      "gay.skitbet.dubstepmod.SkitDubstepFabric"
     ],
     "client": [
       "gay.skitbet.dubstepmod.client.SkitDubstepModFabricClient"

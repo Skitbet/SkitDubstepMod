@@ -1,7 +1,6 @@
-package gay.skitbet.dubstepmod.util;
+package gay.skitbet.dubstepmod.utils;
 
 
-import gay.skitbet.dubstepmod.utils.ModSounds;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundCategory;

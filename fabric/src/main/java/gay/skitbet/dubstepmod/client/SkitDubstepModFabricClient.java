@@ -1,6 +1,6 @@
 package gay.skitbet.dubstepmod.client;
 
-import gay.skitbet.dubstepmod.util.SoundHelper;
+import gay.skitbet.dubstepmod.utils.SoundHelper;
 import gay.skitbet.dubstepmod.utils.ModPackets;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
